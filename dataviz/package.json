@@ -9,6 +9,9 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "d3": "^6.2.0",
+    "d3-zoom": "^2.0.0",
+    "topojson": "^3.0.2",
     "vue": "^3.0.0"
   },
   "devDependencies": {
