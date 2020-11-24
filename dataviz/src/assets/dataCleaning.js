@@ -4,32 +4,6 @@ const PenREndpoint = "https://opendata.rdw.nl/resource/6wzd-evwu.json";
 // Endpoint with Parking Specifications
 const specsEndpoint = "https://opendata.rdw.nl/resource/b3us-f26s.json?$limit=1600";
 
-export async function combinedData() {
-    // Get all the P+R data and Parking Specification data from the RDW
-	const prData = await getData(PenREndpoint);
-    const specData = await getData(specsEndpoint);
-    
-    // Make an array with areaIDs of P+R facilities (used for filtering specData) 
-    const prAreas = prData.map(a => a.areaid);
-    // Filter the parking specification data to only include objects with a P+R areaID
-    const prSpecData = specData.filter(id => prAreas.includes(id.areaid));
-    
-    // Combine the P+R data with the P+R parking specification data. Store in 'dataCap'
-    const combinedData = combineData(prData, prSpecData);
-
-    return combinedData;
-}
-
-export async function cityData(combinedData) {
-    // Get all the P+R city names in an array
-    const cities = combinedData.map(a => a.city);
-    
-    // Data for bar chart. Array of unique city names with the total number of P+R facilities
-    const cityData = await getCityData(cities);
-
-    return cityData;
-}
-
 //////////////////////
 /// DATA CLEANING ///
 ////////////////////
@@ -115,7 +89,6 @@ function getCityName(parkingName) {
 	return /\(([^)]+)\)/.exec(parkingName)[1];
 }
 
-
 ///////////////////
 /// FETCH DATA ///
 /////////////////
@@ -126,4 +99,34 @@ async function getData(url) {
     const response = await fetch(url);
     const data = await response.json();
     return data;
+}
+
+/////////////////////////
+/// FUNCTION EXPORTS ///
+///////////////////////
+
+export async function combinedData() {
+    // Get all the P+R data and Parking Specification data from the RDW
+	const prData = await getData(PenREndpoint);
+    const specData = await getData(specsEndpoint);
+    
+    // Make an array with areaIDs of P+R facilities (used for filtering specData) 
+    const prAreas = prData.map(a => a.areaid);
+    // Filter the parking specification data to only include objects with a P+R areaID
+    const prSpecData = specData.filter(id => prAreas.includes(id.areaid));
+    
+    // Combine the P+R data with the P+R parking specification data. Store in 'dataCap'
+    const combinedData = combineData(prData, prSpecData);
+
+    return combinedData;
+}
+
+export async function cityData(combinedData) {
+	// Get all the P+R city names in an array
+    const cities = combinedData.map(a => a.city);
+    
+    // Data for bar chart. Array of unique city names with the total number of P+R facilities
+    const cityData = await getCityData(cities);
+
+    return cityData;
 }
