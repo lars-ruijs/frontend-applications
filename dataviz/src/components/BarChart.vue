@@ -12,6 +12,7 @@ import * as d3 from "d3"
 
 export default {
     name: "BarChart",
+    emits: ["cityname"],
     props: {
         width: {
             type: Number,
@@ -96,7 +97,13 @@ export default {
             .attr("fill", "#1873cc")
             .attr("class", d => d.city)
             .on("mouseover", function() {d3.select(this).style("cursor", "pointer");})
+            .on("click", this.storeCity);
         },
+
+        storeCity(id) {
+            const city = id.target.className.baseVal;
+            this.$emit('cityname', city);
+        }
     }
 };
 </script>

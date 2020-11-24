@@ -3,22 +3,26 @@
   <ul>
     <li v-for="city in cityData" :key="city.lat">{{ city.city }}</li>
   </ul>
-  <BarChart v-if="cityData.length > 0" :barData="cityData" :width="900" :height="420" />
+  <BarChart v-if="cityData.length > 0" :barData="cityData" :width="900" :height="420" @cityname="makePie"/>
+  
+  <PieChart v-if="pieData.length > 0" :pieCityData="pieData" :width="900" :height="420"/>
 </template>
 
 <script>
 import * as RDWData from "../assets/dataCleaning";
 import BarChart from "./BarChart";
+import PieChart from "./PieChart";
 
 console.log("Hallo boven export van Main");
 
 export default {
   name: 'Main',
-  components: { BarChart },
+  components: { BarChart, PieChart },
   data() {
     return {
       specificationData: [],
       cityData: [],
+      pieData: [],
     };
   },
   mounted() {
@@ -31,7 +35,10 @@ export default {
 
       const prCityData = await RDWData.cityData(specData);
       this.cityData = prCityData;
-      this.dataFetched = true;
+    },
+    makePie(id) {
+      const citySpecs = this.specificationData.filter(a => a.city == id);
+      this.pieData = citySpecs;
     }
   },
 };
