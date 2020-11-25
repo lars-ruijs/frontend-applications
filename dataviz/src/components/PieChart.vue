@@ -1,10 +1,8 @@
 <template>
-    <h1>Hi I'm a Pie from {{ pieCityData[0].city }}</h1>
     <div id="piechartdiv">
+        <h2>Hoe is de parkeercapaciteit verdeeld?</h2>
+        <p>Bij P+R locaties in {{ pieCityData[0].city }}.</p>
 	</div>
-     <ul>
-    <li v-for="city in pieCityData" :key="city.lat">{{ city.name }}</li>
-  </ul>
 </template>
 
 <script>
@@ -36,7 +34,7 @@ export default {
         arcGenerator() {
             const arc = d3.arc()
             .innerRadius(0)
-            .outerRadius(150);
+            .outerRadius(130);
             return arc
         },
         makePieChart() {
@@ -45,10 +43,10 @@ export default {
             const pieChart = d3.select("#piechartdiv")
             .append("svg")
                 .attr('class', 'pie')
-                .attr("width", this.width/2)
+                .attr("width", this.width)
                 .attr("height", this.height)
                 .append("g")
-                .attr("transform", `translate(${this.width/2/2}, ${this.height/2})`);
+                .attr("transform", `translate(${this.width/2}, ${this.height/4.5})`);
 
             // Data inside pie chart must be generated based on the parking capacity
             const pie = d3.pie()
@@ -82,6 +80,32 @@ export default {
             .text(d => d.value)
             .style("text-anchor", "middle");
 
+            const dots = pieChart.selectAll(".dots")
+            .data(data);
+
+            dots
+            .enter()
+            .append("circle")
+            .attr('class', 'dots')
+            .attr("cx", -210)
+            .attr("cy", function(d,i){ return 180 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
+            .attr("r", 7)
+            .attr("fill", (data, i)=>{ 
+                return d3.interpolateRainbow(i/10); 
+            })
+
+            const legendText = pieChart.selectAll(".legend")
+            .data(data);
+
+            legendText
+            .enter()
+            .append("text")
+                .attr('class', 'legend')
+                .attr("x", -190)
+                .attr("y", function(d,i){ return 180 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
+                .text(function(d){ return `${d.name} - ${d.capacity}`})
+                .attr("text-anchor", "left")
+                .style("alignment-baseline", "middle")
         },
 
         updatePieChart() {
@@ -121,7 +145,7 @@ export default {
             .remove();
 
             // Select all text elements inside the main pieChart svg element. Bind the data to it.
-            const texts = pieChart.selectAll("text")
+            const texts = pieChart.selectAll(".pieText")
             .data(pie(data));
 
             // Update existing text labels with new data. Set text to the current capacity value. 
@@ -142,11 +166,70 @@ export default {
             texts
             .exit()
             .remove();
+
+            const dots = pieChart.selectAll(".dots")
+            .data(data);
+
+            dots
+            .attr("cx", -210)
+            .attr("cy", function(d,i){ return 180 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
+            .attr("r", 7)
+            .attr("fill", (data, i)=>{ 
+                return d3.interpolateRainbow(i/10); 
+            })
+
+            dots
+            .enter()
+            .append("circle")
+            .attr('class', 'dots')
+            .attr("cx", -210)
+            .attr("cy", function(d,i){ return 180 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
+            .attr("r", 7)
+            .attr("fill", (data, i)=>{ 
+                return d3.interpolateRainbow(i/10); 
+            })
+
+            dots
+            .exit()
+            .remove();
+
+            const legendText = pieChart.selectAll(".legend")
+            .data(data);
+
+            legendText
+            .attr("y", function(d,i){ return 180 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
+            .text(function(d){ return `${d.name} - ${d.capacity}`})
+
+
+            legendText
+            .enter()
+            .append("text")
+                .attr('class', 'legend')
+                .attr("x", -190)
+                .attr("y", function(d,i){ return 180 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
+                .text(function(d){ return `${d.name} - ${d.capacity}`})
+                .attr("text-anchor", "left")
+                .style("alignment-baseline", "middle")
+
+            legendText
+            .exit()
+            .remove();
         }
     }
 }
 </script>
 
 <style scoped>
-
+    h2 {
+        font-size: 1.5em;
+        margin: 0 0 0 0;
+        color: #325F98;
+    }
+    p {
+        margin: 0.1em 0 1.8em 0;
+        color: #797979;
+    }
+    #piechartdiv {
+        margin-left: 1.2em;
+    }
 </style>

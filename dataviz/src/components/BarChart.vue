@@ -1,7 +1,7 @@
 <template>
-    <h2>Welke steden hebben de meeste P+R locaties na Rotterdam?</h2>
-    <p><strong>Klik op de staaf</strong> van een stad om te zien hoe het aantal parkeerplaatsen van de P+R locaties binnen die stad is verdeeld.</p>
     <div id="barchartdiv">
+    <h2>Welke steden hebben de meeste P+R locaties na Rotterdam?</h2>
+    <p><strong>Klik op de staaf</strong> van een stad om te zien hoe het aantal parkeerplaatsen van de P+R locaties <br> binnen die stad is verdeeld.</p>
 	</div>
 </template>
 
@@ -33,7 +33,7 @@ export default {
     methods: {
         makeBarChart() {
             const lessData = this.barData.filter(d => d.prLocations > 2 && d.prLocations < 15).sort((b, a) => a.prLocations - b.prLocations);
-            const margin = {top: 10, right: 30, bottom: 170, left: 80};
+            const margin = {top: 20, right: 30, bottom: 200, left: 60};
             const innerWidth = this.width - margin.left - margin.right;
             const innerHeight = this.height - margin.top - margin.bottom;
 
@@ -44,7 +44,7 @@ export default {
                 .attr("height", this.height)
                 .attr('class', 'barchart')
             .append("g")
-                .attr("transform", `translate(${margin.left}, ${innerHeight/2/2})`);
+                .attr("transform", `translate(${margin.left}, ${innerHeight/5.5})`);
 
             // X-axis with scaleBand() used for catigorical elements (here: city names)
             const x = d3.scaleBand()
@@ -81,7 +81,7 @@ export default {
             .attr('y', -40)
             .attr('x', -innerHeight/2+15)
             .attr("transform", `rotate(-90)`)
-            .text('Aantal P+R locaties >');
+            .text('Aantal P+R locaties →');
 
             // Create the bars based on the cityData
             // Give it a class with the name of the city (used for generating pie chart later)

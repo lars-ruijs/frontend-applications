@@ -3,9 +3,11 @@
   <ul>
     <li v-for="city in cityData" :key="city.lat">{{ city.city }}</li>
   </ul>
-  <BarChart v-if="cityData.length > 0" :barData="cityData" :width="900" :height="420" @cityname="makePie"/>
+  <div class="barPie">
+    <BarChart v-if="cityData.length > 0" :barData="cityData" :width="780" :height="580" @cityname="makePie"/>
   
-  <PieChart v-if="pieData.length > 0" :pieCityData="pieData" :width="900" :height="420"/>
+    <PieChart v-if="pieData.length > 0" :pieCityData="pieData" :width="450" :height="610"/>
+  </div>
 </template>
 
 <script>
@@ -46,6 +48,20 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+.barPie {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: white;
+  margin: 0 -2.55vw 0 -2.55vw;
+  padding: 5em 4.5vw 0 4.5vw;
+  border: solid #707070;
+  border-width: 1px 0 1px 0;
+}
+
+text {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+
 h3 {
   margin: 40px 0 0;
 }
@@ -60,8 +76,30 @@ li {
 a {
   color: #42b983;
 }
- g text.axis-label {
+g text.axis-label {
   font-size: 1.5em;
   fill: grey;
 }
+
+.tick text {
+  font-size: 1.3em;
+  color: #0f487f;
+}
+
+.pie text {
+  fill: white;
+}
+
+.pie text.legend {
+  fill: #797979;
+}
+
+path.domain {
+  stroke: #a5d2ff;
+}
+
+.tick line {
+  stroke: #a5d2ff;
+}
+
 </style>
