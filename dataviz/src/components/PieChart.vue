@@ -230,6 +230,6 @@ export default {
         color: #797979;
     }
     #piechartdiv {
-        margin-left: 1.2em;
+        margin-left: 1.6em;
     }
 </style>

@@ -8,18 +8,20 @@
   
     <PieChart v-if="pieData.length > 0" :pieCityData="pieData" :width="450" :height="610"/>
   </div>
+  <Map v-if="cityData.length > 0 && specificationData.length > 0" :combinedData="specificationData" :cityData="cityData" :width="1100" :height="600" />
 </template>
 
 <script>
 import * as RDWData from "../assets/dataCleaning";
 import BarChart from "./BarChart";
 import PieChart from "./PieChart";
+import Map from "./Map";
 
 console.log("Hallo boven export van Main");
 
 export default {
   name: 'Main',
-  components: { BarChart, PieChart },
+  components: { BarChart, PieChart, Map },
   data() {
     return {
       specificationData: [],
@@ -100,6 +102,20 @@ path.domain {
 
 .tick line {
   stroke: #a5d2ff;
+}
+
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  max-width: 100%;
+  max-height: 100%;
+  padding: 0.8em;
+  font: 1em Avenir;
+  background-color: #B034C6;
+  border: 0;
+  border-radius: 8px;
+  pointer-events: none;
+  color: white;
 }
 
 </style>
