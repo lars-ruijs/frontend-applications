@@ -1,8 +1,5 @@
 <template>
-  <h1>Main.vue</h1>
-  <img alt="Vue logo" src="./assets/logo.png">
   <Main />
-  <h1>Hello</h1>
 </template>
 
 <script>
@@ -20,15 +17,15 @@ export default {
 html {
   margin: 0;
   padding: 0;
-  background-color: #66a0eb;
+  background-color: #fafafa;
 }
 
 #app {  
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  color: #325F98;
   margin: 0;
-  padding: 0 2vw 0 2vw;
+  padding: 0 4vw 0 4vw;
 }
 </style>

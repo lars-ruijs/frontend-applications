@@ -1,14 +1,18 @@
 <template>
-<h1>Hoi</h1>
-  <ul>
-    <li v-for="city in cityData" :key="city.lat">{{ city.city }}</li>
-  </ul>
+<h1>In welke stad heb je de grootste kans om je auto te parkeren bij een P+R?</h1>
+  <p>
+      “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.”
+</p>
   <div class="barPie">
     <!-- Contains custom event "cityname" to generate pie chart with function "makePie" -->
     <BarChart v-if="cityData.length > 0" :barData="cityData" :width="780" :height="580" @cityname="makePie"/>
   
-    <PieChart v-if="pieData.length > 0" :pieCityData="pieData" :width="450" :height="610"/>
+    <PieChart v-if="pieData.length > 0" :pieCityData="pieData" :width="430" :height="610"/>
   </div>
+  <h1>Hoe verdelen steden hun P+R locaties over de stad?</h1>
+  <p>
+      “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.”
+  </p>
   <Map v-if="cityData.length > 0 && specificationData.length > 0" :combinedData="specificationData" :cityData="cityData" :width="1100" :height="600" />
  
 </template>
@@ -61,9 +65,9 @@ export default {
   display: flex;
   flex-wrap: wrap;
   background-color: white;
-  margin: 0 -2.55vw 0 -2.55vw;
+  margin: 5em -4.5vw 7em -4.5vw;
   padding: 5em 4.5vw 0 4.5vw;
-  border: solid #707070;
+  border: solid #c2c2c2;
   border-width: 1px 0 1px 0;
 }
 

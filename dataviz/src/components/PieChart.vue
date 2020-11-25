@@ -120,7 +120,7 @@ export default {
             .enter()
             .append("circle")
                 .attr('class', 'dots')
-                .attr("cx", -210) // Align the dots to the left
+                .attr("cx", -200) // Align the dots to the left
                 .attr("cy", function(d,i){ return 180 + i*25}) // 180 is where the first dot appears. 25 is the distance between the dots
                 .attr("r", 7)
                 .attr("fill", (data, i)=>{ 
@@ -146,7 +146,7 @@ export default {
             .enter()
             .append("text")
                 .attr('class', 'legend')
-                .attr("x", -190)
+                .attr("x", -180)
                 .attr("y", function(d,i){ return 180 + i*25}) // 180 is where the first text appears. 25 is the distance between text elements
                 .text(function(d){ return `${d.name} - ${d.capacity}`})
                 .attr("text-anchor", "left")
