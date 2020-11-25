@@ -4,11 +4,13 @@
     <li v-for="city in cityData" :key="city.lat">{{ city.city }}</li>
   </ul>
   <div class="barPie">
+    <!-- Contains custom event "cityname" to generate pie chart with function "makePie" -->
     <BarChart v-if="cityData.length > 0" :barData="cityData" :width="780" :height="580" @cityname="makePie"/>
   
     <PieChart v-if="pieData.length > 0" :pieCityData="pieData" :width="450" :height="610"/>
   </div>
   <Map v-if="cityData.length > 0 && specificationData.length > 0" :combinedData="specificationData" :cityData="cityData" :width="1100" :height="600" />
+ 
 </template>
 
 <script>
@@ -30,25 +32,30 @@ export default {
     };
   },
   mounted() {
+    // Execute function fetchData to get the RDW data
     this.fetchData();
   },
   methods: {
     async fetchData() {
+      // Fetch the P+R specification data and set value to data()
       const specData = await RDWData.combinedData();
       this.specificationData = specData;
 
+      // Fetch the city data and set value to data()
       const prCityData = await RDWData.cityData(specData);
       this.cityData = prCityData;
     },
     makePie(id) {
+      // Get correct data for pie chart based on clicked bar from bar chart. 
       const citySpecs = this.specificationData.filter(a => a.city == id);
+
+      // Set pieData inside data() to the generated citySpecs.
       this.pieData = citySpecs;
     }
   },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
 .barPie {
   display: flex;
