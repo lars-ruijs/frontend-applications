@@ -1,6 +1,6 @@
 <template>
     <div id="barchartdiv">
-    <h2>Welke steden hebben de meeste P+R locaties na Rotterdam?</h2>
+    <h2>Welke steden zien nu al het nut van P+R parkeren?</h2>
     <p><strong>Klik op de staaf</strong> van een stad om te zien hoe het aantal parkeerplaatsen van de P+R locaties <br> binnen die stad is verdeeld.</p>
 	</div>
 </template>

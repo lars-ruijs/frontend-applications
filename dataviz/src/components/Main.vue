@@ -1,8 +1,23 @@
 <template>
-<h1>In welke stad heb je de grootste kans om je auto te parkeren bij een P+R?</h1>
+  <h1>Wat is het nut van P+R parkeren?</h1>
+    <p>
+      Park en Ride locaties zijn speciale parkeervoorzieningen die vaak buiten het centrum van een stad liggen en die direct aansluiting bieden op openbaar vervoer om verder naar een eindbestemming te reizen. P+R locaties liggen daarom regelmatig bij een treinstation waarvandaan reizigers naar alle uithoeken van het land kunnen reizen. Toch is dat lang niet meer het enige gebruikersdoel. P+R locaties zijn ook bij uitstek geschikt om (voordelig) te parkeren tijdens een stadsbezoek.
+  </p>
   <p>
-      “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.”
-</p>
+      De noodzaak om buiten het stadscentrum te kunnen parkeren groeit. De gemeente Amsterdam heeft bijvoorbeeld sinds januari van dit jaar <a href="https://assets.amsterdam.nl/publish/pages/956709/agenda_autoluw.pdf" target="_blank">een agenda</a> opgesteld om het centrum van de hoofdstad autoluw te maken. Er moet een parkeerluw stadshart komen en parkeervrije stadsstraten met meer ruimte voor fietsers, voetgangers en het OV. Parkeertarieven in het centrum worden verhoogd. 
+  </p>
+  <div class="featured">
+    <p>Het centrum van Amsterdam moet autoluw worden: meer ruimte voor fietsers, <br> voetgangers en het OV. P+R locaties kunnen daar aan bijdragen.</p>
+  </div>
+  <p>
+      Een belangrijk onderdeel van het plan “Amsterdam Autoluw” is onder andere de maatregel om P+R faciliteiten uit te breiden. Volgens de gemeente worden bestaande P+R locaties van de stad jaarlijks door meer dan 1 miljoen mensen gebruikt. Nu zorgen die locaties nog voor zo’n 2% lagere parkeerdruk in het centrum. Dat moet volgens de gemeente meer worden door onder andere bestaande locaties uit te breiden en nieuwe locaties te openen. Toch is Amsterdam niet de stad met de meeste P+R locaties. Rotterdam staat stipt op één met 19 P+R locaties rondom het stadscentrum. Sinds de zomer van 2017 heeft Rotterdam drie P+R voorzieningen gratis gemaakt voor OV-reizigers om het gebruik ervan te stimuleren. Ook in Rotterdam wordt het aantal parkeerplaatsen in de binnenstad <a href="https://www.mobiliteitsplatform.nl/artikel/parkeerplaatsen-verdwijnen-in-autoluw-rotterdam" target="_blank">verminderd</a>. In 2020 moeten er 3000 straatparkeerplaatsen zijn verwijderd.
+  </p>
+  <div class="featured">
+    <p>Rotterdam staat stipt op één met 19 P+R locaties <br> rondom het stadscentrum.</p>
+  </div>
+  <p>
+      Als je kijkt naar het aantal P+R locaties van steden, valt op dat niet alleen grote steden meerdere P+R locaties hebben. Hieronder staat een overzicht van steden na Rotterdam die minimaal 3 P+R locaties hebben. Voor locaties waarvan de parkeercapaciteit onbekend is, is de capaciteit ingesteld als 1.
+  </p>
   <div class="barPie">
     <!-- Contains custom event "cityname" to generate pie chart with function "makePie" -->
     <BarChart v-if="cityData.length > 0" :barData="cityData" :width="780" :height="580" @cityname="makePie"/>
@@ -11,10 +26,18 @@
   </div>
   <h1>Hoe verdelen steden hun P+R locaties over de stad?</h1>
   <p>
-      “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.”
+      De kaart hieronder laat zien waar P+R locaties te vinden zijn en hoe ver ze van het centrum van de stad liggen. Wat opvalt is dat in het westen van Nederland meer P+R locaties zijn en dat deze locaties ook vaak een grotere capaciteit hebben. Het oosten van het land is het slechts vertegenwoordigd qua aantal P+R locaties per stad en de capaciteit daarvan. De P+R locaties die er zijn liggen wel vaak dichtbij het centrum van die stad.
+  </p>
+  <div class="featured">
+    <p>Het oosten van het land is het slechts vertegenwoordigd qua aantal P+R locaties per stad en de capaciteit daarvan.</p>
+  </div>
+  <p> 
+    De onderstaande kaart is interactief: zoom uit voor een groter overzicht van de verdeling van P+R locaties in het land. Klik op een P+R locatie om de capaciteit ervan in detail te zien. Voor locaties waarvan de parkeercapaciteit onbekend is, is de capaciteit ingesteld als 1.
   </p>
   <Map v-if="cityData.length > 0 && specificationData.length > 0" :combinedData="specificationData" :cityData="cityData" :width="1100" :height="600" />
- 
+ <p>
+   Conclusie: grote steden als Amsterdam en Rotterdam zijn al bezig met het veranderen van hun parkeerbeleid. Parkeren in de binnenstad wordt hier ontmoedigd door het verwijderen van parkeerplekken en het verhogen van parkeertarieven. Wanneer steden als doel hebben om de auto uit het centrum te weren, kunnen P+R locaties een van de maatregelen zijn om dat te bereiken. In het westen van het land zijn steden al op weg met meerdere P+R locaties, terwijl in het oosten van het land het aanbod nog kleiner is. 
+ </p>
 </template>
 
 <script>
@@ -65,7 +88,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   background-color: white;
-  margin: 5em -4.5vw 7em -4.5vw;
+  margin: 5em -9.5vw 7em -9.5vw;
   padding: 5em 4.5vw 0 4.5vw;
   border: solid #c2c2c2;
   border-width: 1px 0 1px 0;
@@ -87,7 +110,7 @@ li {
   margin: 0 10px;
 }
 a {
-  color: #42b983;
+  color: #325F98;
 }
 g text.axis-label {
   font-size: 1.5em;
@@ -127,6 +150,20 @@ div.tooltip {
   border-radius: 8px;
   pointer-events: none;
   color: white;
+}
+
+div.featured {
+  border: solid #325F98;
+  border-width: 0 0 0 5px;
+  padding-left: 2em; 
+  margin: 3em 0 3em 0;
+}
+
+div.featured p {
+  font-weight: bold;
+  font-style: italic;
+  font-size: 1.1em;
+  color: #325F98;
 }
 
 </style>

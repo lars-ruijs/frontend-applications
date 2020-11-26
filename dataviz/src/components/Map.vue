@@ -1,5 +1,5 @@
 <template>
-<svg class="legend" width="300" height="120">
+  <svg class="legend" width="300" height="120">
     <circle r="20px" cx="20" cy="20" fill="#B034C6" style="opacity: .5"></circle>
     <circle r="5px" cx="20" cy="20" fill="#B034C6" style="stroke: white; stroke-width: 1"></circle>
     <text x="50" y="25" style="fill: #797979">P+R Locatie</text>
@@ -9,7 +9,7 @@
     <circle r="15px" cx="50" cy="80" fill="#B034C6" style="opacity: .5"></circle>
     <circle r="25px" cx="95" cy="80" fill="#B034C6" style="opacity: .5"></circle>
     <text x="135" y="85" style="fill: #797979">Parkeercapaciteit</text>
-</svg>
+  </svg>
   <div id="mapdiv">
     <svg class="prmap">
         <g transform="translate(300,400), scale(.45)"></g>
@@ -192,7 +192,7 @@ export default {
     #mapdiv {
         display: flex;
         justify-content: flex-end;
-        margin: 2em -4.55vw 0 -4.55vw;
+        margin: 2em -9.55vw 5em -9.55vw;
         background-color: #0f477e;
         border: solid #c2c2c2;
         border-width: 1px 0 1px 0;
@@ -202,7 +202,7 @@ export default {
         height: 35em;
     }
     svg.legend {
-        margin: 2em 0 1em 0;
+        margin: 3em 0 1em 0;
     }
 </style>
 
