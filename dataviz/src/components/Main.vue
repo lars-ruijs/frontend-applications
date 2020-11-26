@@ -12,11 +12,11 @@
   </div>
 
   <p>
-      Een belangrijk onderdeel van het plan “Amsterdam Autoluw” is onder andere de maatregel om P+R faciliteiten uit te breiden. Volgens de gemeente worden bestaande P+R locaties van de stad jaarlijks door meer dan 1 miljoen mensen gebruikt. Nu zorgen die locaties nog voor zo’n 2% lagere parkeerdruk in het centrum. Dat moet volgens de gemeente meer worden door onder andere bestaande locaties uit te breiden en nieuwe locaties te openen. Toch is Amsterdam niet de stad met de meeste P+R locaties. Rotterdam staat stipt op één met 19 P+R locaties rondom het stadscentrum. Sinds de zomer van 2017 heeft Rotterdam drie P+R voorzieningen gratis gemaakt voor OV-reizigers om het gebruik ervan te stimuleren. Ook in Rotterdam wordt het aantal parkeerplaatsen in de binnenstad <a href="https://www.mobiliteitsplatform.nl/artikel/parkeerplaatsen-verdwijnen-in-autoluw-rotterdam" target="_blank">verminderd</a>. In 2020 moeten er 3000 straatparkeerplaatsen zijn verwijderd.
+      Een belangrijk onderdeel van het plan “Amsterdam Autoluw” is onder andere de maatregel om P+R faciliteiten uit te breiden. Volgens de gemeente worden bestaande P+R locaties van de stad jaarlijks door meer dan 1 miljoen mensen gebruikt. Nu zorgen die locaties nog voor zo’n 2% lagere parkeerdruk in het centrum. Dat moet volgens de gemeente meer worden door onder andere bestaande locaties uit te breiden en nieuwe locaties te openen. Toch is Amsterdam niet de stad met de meeste P+R locaties. Rotterdam staat stipt op één met 17 P+R locaties rondom het stadscentrum. Sinds de zomer van 2017 heeft Rotterdam drie P+R voorzieningen gratis gemaakt voor OV-reizigers om het gebruik ervan te stimuleren. Ook in Rotterdam wordt het aantal parkeerplaatsen in de binnenstad <a href="https://www.mobiliteitsplatform.nl/artikel/parkeerplaatsen-verdwijnen-in-autoluw-rotterdam" target="_blank">verminderd</a>. In 2020 moeten er 3000 straatparkeerplaatsen zijn verwijderd.
   </p>
 
   <div class="featured">
-    <p>Rotterdam staat stipt op één met 19 P+R locaties <br> rondom het stadscentrum.</p>
+    <p>Rotterdam staat stipt op één met 17 P+R locaties <br> rondom het stadscentrum.</p>
   </div>
 
   <p>
