@@ -8,7 +8,7 @@ All of the RDW datasets can be found [here](https://opendata.rdw.nl/browse).
 
 ## 📊 Data Story
 
-![visualization](https://res.cloudinary.com/rucla-static/video/upload/e_loop/v1606427755/Schermopname_2020-11-26_om_22.54.10_j5cobb.gif)
+![visualization](https://user-images.githubusercontent.com/60745347/100394455-82c4b580-303d-11eb-82c4-57b83ee61181.png)
 I created an interactive data story that shows how cities deal with P+R locations. First of all I show which cities have a lot of P+R locations and how they have distributed the parking capacity of those locations. Then I show a map showing the national distribution. You can also see how cities distribute their P+R locations across the city and how far they are from the city center. View the data story [here](https://fa-cmda.netlify.app/).
 
 ## 💡 Concept
@@ -91,7 +91,7 @@ Here a user selects a bar from the barchart to get a pie chart with more informa
 
 <img src="https://user-images.githubusercontent.com/60745347/100391938-5147ec00-3035-11eb-93bb-d4bba037372d.png" alt="digitale schets" width="70%" />
 
-Digital sketch based on a combination of the general visualization and the map visualization, in the form of a data story. .
+Digital sketch based on a combination of the general visualization and the map visualization, in the form of a data story.
 
 <br>
 
