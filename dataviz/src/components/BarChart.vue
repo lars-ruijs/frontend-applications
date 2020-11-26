@@ -1,6 +1,6 @@
 <template>
     <div id="barchartdiv">
-    <h2>Welke steden zien nu al het nut van P+R parkeren?</h2>
+    <h3>Welke steden zien nu al het nut van P+R parkeren?</h3>
     <p><strong>Klik op de staaf</strong> van een stad om te zien hoe het aantal parkeerplaatsen van de P+R locaties <br> binnen die stad is verdeeld.</p>
 	</div>
 </template>
@@ -118,7 +118,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    h2 {
+    h3 {
         font-size: 1.5em;
         margin: 0;
         color: #325F98;

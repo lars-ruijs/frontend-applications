@@ -1,6 +1,6 @@
 <template>
     <div id="piechartdiv">
-        <h2>Hoe is de parkeercapaciteit verdeeld?</h2>
+        <h3>Hoe is de parkeercapaciteit verdeeld?</h3>
         <p>Bij P+R locaties in {{ pieCityData[0].city }}.</p>
         <svg class="pie" :width="this.width" :height="this.height">
             <g :transform="`translate(${this.width/2}, ${this.height/4.5})`"></g>
@@ -163,7 +163,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    h2 {
+    h3 {
         font-size: 1.5em;
         margin: 0 0 0 0;
         color: #325F98;

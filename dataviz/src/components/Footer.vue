@@ -14,7 +14,7 @@ export default {
     footer {
         height: 2em;
         border-top: 1px solid #325F98;        
-        margin: 6em -9.55vw 0 -9.55vw;
+        margin: 6em -15.55vw 0 -15.55vw;
         text-align: center;
         padding: 2em 0 2em 0;
     }

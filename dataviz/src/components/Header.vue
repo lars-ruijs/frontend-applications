@@ -1,7 +1,6 @@
 <template>
     <header>
         <h1>De auto <s>(in)</s> buiten de stad</h1>
-        <p>Kleine introductie tekst</p>
     </header>
 </template>
 
@@ -19,10 +18,11 @@ export default {
         background-position: center;
         background-attachment: fixed;
         height: 25em;
-        margin: -0.5em -9.55vw 6em -9.55vw;
+        margin: -0.5em -15.55vw 6em -15.55vw;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        border-bottom: 10px solid #325F98;
     }
 
     h1, p {
