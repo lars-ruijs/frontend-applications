@@ -192,7 +192,7 @@ export default {
     #mapdiv {
         display: flex;
         justify-content: flex-end;
-        margin: 2em -9.55vw 5em -9.55vw;
+        margin: 2em -9.55vw 6em -9.55vw;
         background-color: #0f477e;
         border: solid #c2c2c2;
         border-width: 1px 0 1px 0;
