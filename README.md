@@ -6,9 +6,10 @@ More information about De Volkskrant can be found at [Wikipedia (English)](https
 
 All of the RDW datasets can be found [here](https://opendata.rdw.nl/browse).
 
-## 📊 Visualization
+## 📊 Data Story
 
-I created an interactive visualization that shows how the P+R parking capacity is distributed in cities. When you press a bar from the barchart, a pie chart shows how the number of parking spaces of the P+R locations within that city is distributed. View the visualization [here](https://fa-cmda.netlify.app/).
+![visualization](https://res.cloudinary.com/rucla-static/video/upload/e_loop/v1606427755/Schermopname_2020-11-26_om_22.54.10_j5cobb.gif)
+I created an interactive data story that shows how cities deal with P+R locations. First of all I show which cities have a lot of P+R locations and how they have distributed the parking capacity of those locations. Then I show a map showing the national distribution. You can also see how cities distribute their P+R locations across the city and how far they are from the city center. View the data story [here](https://fa-cmda.netlify.app/).
 
 ## 💡 Concept
 
@@ -23,9 +24,6 @@ With this question I have thought of several subquestions, which focus more deep
 - How far are the P+R locations from the city center?
 - Which city has the most P+R locations?
 - How large is the parking capacity of these locations?
-- Do the P+R locations offer facilities for the disabled?
-- Are the number of P+R locations in the Netherlands increasing?
-- Which P+R locations offer a connection to a train station?
 
 ### 💭 Assumptions
 
@@ -59,21 +57,20 @@ You can view more information about this data set [here](https://developer.here.
 
 - `position` gives information about the latitude and longitude coordinates of a given city. <br> _Example output: `{"lat": 51.82611, "lng": 4.83329}`;_ <br><br>
 
-To give information about travel time with public transportation for the last part of the trip (traveling between P+R location and city center) I need an API that can give a travel adivse between two coordinates. I want to use the Publice Transit API from HERE for this.
-
 ### ⬜️ Empty values
 
 When a dataset contains empty values, I will either not use the empty cells or interpert the value in a cell as null. This depends of course on what the subject of the corresponding column is. Below are the empty values I came across and what I did with them:
 
-- Inside the dataset [PenR GEO](https://opendata.rdw.nl/Parkeren/GEO-PenR/6wzd-evwu), there was one P+R location without an `AreaDesc` (the name of a P+R location plus the city name). Because of this, I put the name as `null` and the place name as `null` as well.
+- Inside the dataset [PenR GEO](https://opendata.rdw.nl/Parkeren/GEO-PenR/6wzd-evwu), there was one P+R location without an `AreaDesc` (the name of a P+R location plus the city name). Because of this, I put the name as `null` and the place name as `null` as well. I removed this "city" from the map in my visualization.
 
 - About 54 `areaId`s (unique identification numbers) of P+R locations were missing from the dataset [Specificaties Parkeergebied](https://opendata.rdw.nl/Parkeren/Open-Data-Parkeren-SPECIFICATIES-PARKEERGEBIED/b3us-f26s). This means, among other things, that I can't get any information about parking capacity from them. I set the capacity of these locations to 1, because I need the capacity to create a pie chart. In this way, the missing capacities are still visible and D3 can work with them.
 
 I haven't come across any other missing data, but I have specified in my code that if there are missing values, they will be replaced for null.
 
-### ✏️ Sketch of my concept (so far)
+### ✏️ Early Sketches of my concept
 
-I would like to visualise the spread of P+R locations across the country and show the distance between a city centre and a P+R location. The first example below is without a map background. The other sketches do have a simple map as background, because I think this helps to visualize the spread of P+R locations over smaller places in the country. <br><br>
+I would like to visualise the spread of P+R locations across the country and show the distance between a city centre and a P+R location. I've created several sketches: a general visualization of the number of P+R facilities and visualizations that show the spread of P+R facilities across the country on a map.
+<br><br>
 After receiving feedback from de Volkskrant, I decided to first make a general visualization of P+R parking capacity divided over cities. See the sketch below:
 
 <br>
@@ -90,22 +87,13 @@ Here a user selects a bar from the barchart to get a pie chart with more informa
 
 ![schets met kaart als achtergrond](https://user-images.githubusercontent.com/60745347/98243611-7a151e00-1f6e-11eb-9bf0-cf9d05fffd91.jpg)
 
-Sketch with the option to filter displayed P+R facilities by travel time for the last part of the journey (journey between parking lot and city center).
-
 <br>
 
-<img src="https://user-images.githubusercontent.com/60745347/98243811-c3656d80-1f6e-11eb-883d-a8557f75133b.png" alt="digitale schets" width="70%" />
+<img src="https://user-images.githubusercontent.com/60745347/100391938-5147ec00-3035-11eb-93bb-d4bba037372d.png" alt="digitale schets" width="70%" />
 
-Digital sketch based on the second draft.
+Digital sketch based on a combination of the general visualization and the map visualization, in the form of a data story. .
 
 <br>
-
-## 🛁 Survey data cleaning with functional patterns
-
-This function cleans the coordinates in the column "place of birth". First of all, an array is created with `map()` of the values in the column. This array is directly filtered on empty values using `filter()`. Then a function checks if the coordinates need to be converted from the "degree, minute and seconds"-format to a decimal format. If so, it does so and places the result as an object in a new array. If the coordinate doesn't have to get converted, weird characters will be filtered out and the string coordinates will be cut into an object with a lattitude and longitude. This object is placed back in the array.
-Finally the function removes 11 invalid coordinates. These are for example coordinates with invalid degree indicators or coordinates that only contain a lattitude (or longitude).
-
-You can view that code [here](https://github.com/lars-ruijs/functional-programming/blob/4ab79d869b5386325b86b3ad64bb34921343c8c3/survey-cleaning/scripts/script.js#L84-L125).
 
 ## 🗒 Sources
 
@@ -139,7 +127,25 @@ I've used the following sources while working on my project:
 - **Making a bar chart with D3** YouTube video by Curran Kelleher. View the video [here](https://www.youtube.com/watch?v=NlBt-7PuaLk&list=PL9yYRbwpkykvOXrZumtZWbuaXWHvjD8gi&index=7).
 - **Customizing Axes of a bar chart** YouTube video by Curran Kelleher. View the video [here](https://www.youtube.com/watch?v=c3MCROTNN8g&list=PL9yYRbwpkykvOXrZumtZWbuaXWHvjD8gi&index=9).
 - **Interactive Pie chart** an example from D3 Graph Gallery. View the example [here](https://www.d3-graph-gallery.com/graph/pie_changeData.html).
-- **Pie chart with annotation** an example from D3 Graph Gallery. View the example [here](https://www.d3-graph-gallery.com/graph/pie_annotation.html)
+- **Pie chart with annotation** an example from D3 Graph Gallery. View the example [here](https://www.d3-graph-gallery.com/graph/pie_annotation.html).
+- **Creating a legend with D3** an example from D3 Graph Gallery. View the example [here](https://www.d3-graph-gallery.com/graph/custom_legend.html).
+- **Making a map of the Netherlands** with the help of the visualization made by fellow student Merlijn Bergevoet.
+- **Topojson layer from the Netherlands** made by Cartomap. Used via their [GitHub repository](https://github.com/cartomap/nl).
+- **Creating connecting lines between coordinates** example from D3 Graph gallery. View the example [here](https://www.d3-graph-gallery.com/graph/connectionmap_csv.html)
+- **Creating tooltips on hover with D3** example used from bl.ocks.org. Created by user 'd3noob'. View the example [here](https://bl.ocks.org/d3noob/180287b6623496dbb5ac4b048813af52)
+
+### Working with the Vue framework
+
+- **Introduction tutorials** course "Intro to Vue 3" by Vue Mastery. View the tutorial [here](https://www.vuemastery.com/courses/intro-to-vue-3/intro-to-vue3).
+- **Vue documentation** made by the Vue development team. Read the docs [here](https://v3.vuejs.org/guide/introduction.html)
+- **Implementing D3 with Vue** lecture by Tech Track teacher Robert.
+- **Parent child communication in VueJS** article by Vegibit. Read it [here](https://vegibit.com/vuejs-parent-child-communication/).
+
+### Datastory
+
+- **Header image** made by Vinícius Henrique Photography. Used via [Unsplash](https://unsplash.com/photos/ulsQefp-iwg).
+- **Agenda Amsterdam Autoluw** made by the Gemeente Amsterdam. View the PDF (in Dutch) [here](https://assets.amsterdam.nl/publish/pages/956709/agenda_autoluw.pdf)
+- **Autoluw Rotterdam** article written by Mobiliteits Platform. Read it [here](https://www.mobiliteitsplatform.nl/artikel/parkeerplaatsen-verdwijnen-in-autoluw-rotterdam) (in Dutch).
 
 ## 🔗 License
 
