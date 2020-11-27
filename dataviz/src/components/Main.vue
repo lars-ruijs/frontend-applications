@@ -1,7 +1,7 @@
 <template>
   <h2>Wat is het nut van P+R parkeren?</h2>
   <p>
-      Park en Ride locaties zijn speciale parkeervoorzieningen die vaak buiten het centrum van een stad liggen en die direct aansluiting bieden op openbaar vervoer om verder naar een eindbestemming te reizen. P+R locaties liggen daarom regelmatig bij een treinstation waarvandaan reizigers naar alle uithoeken van het land kunnen reizen. Toch is dat lang niet meer het enige gebruikersdoel. P+R locaties zijn ook bij uitstek geschikt om (voordelig) te parkeren tijdens een stadsbezoek.
+      Park en Ride locaties zijn speciale parkeervoorzieningen die vaak buiten het centrum van een stad liggen en die direct aansluiting bieden op openbaar vervoer om verder naar een eindbestemming te reizen. P+R locaties liggen daarom regelmatig bij een treinstation waar vandaan reizigers naar alle uithoeken van het land kunnen reizen. Toch is dat lang niet meer het enige gebruiksdoel. P+R locaties zijn ook bij uitstek geschikt om (voordelig) te parkeren tijdens een stadsbezoek.
   </p>
   <p>
       De noodzaak om buiten het stadscentrum te kunnen parkeren groeit. De gemeente Amsterdam heeft bijvoorbeeld sinds januari van dit jaar <a href="https://assets.amsterdam.nl/publish/pages/956709/agenda_autoluw.pdf" target="_blank">een agenda</a> opgesteld om het centrum van de hoofdstad autoluw te maken. Er moet een parkeerluw stadshart komen en parkeervrije stadsstraten met meer ruimte voor fietsers, voetgangers en het OV. Parkeertarieven in het centrum worden volgens het plan verhoogd om zo te ontmoedigen dat mensen in de binnenstad hun auto parkeren. 
@@ -48,7 +48,7 @@
 
  <h2>Conclusie</h2>
  <p>
-    Grote steden als Amsterdam en Rotterdam zijn al bezig met het veranderen van hun parkeerbeleid. Parkeren in de binnenstad wordt hier ontmoedigd door het verwijderen van parkeerplekken en het verhogen van parkeertarieven. Wanneer steden als doel hebben om de auto uit het centrum te weren, kunnen P+R locaties een van de maatregelen zijn die gemeentes kunnen nemen om dat te bereiken. In het westen van het land zijn steden al op weg met meerdere P+R locaties per stad, terwijl in het oosten van het land het aanbod nog kleiner is. 
+    Grote steden als Amsterdam en Rotterdam zijn al bezig met het veranderen van hun parkeerbeleid. Parkeren in de binnenstad wordt hier ontmoedigd door het verwijderen van parkeerplekken en het verhogen van parkeertarieven. Wanneer steden als doel hebben om de auto uit het centrum te weren, kunnen P+R locaties een van de maatregelen zijn die gemeenten kunnen nemen om dat te bereiken. In het westen van het land zijn steden al op weg met meerdere P+R locaties per stad, terwijl in het oosten van het land het aanbod nog kleiner is. 
  </p>
 </template>
 
@@ -73,6 +73,9 @@ export default {
   mounted() {
     // Execute function fetchData to get the RDW data
     this.fetchData();
+
+    // Check if localStorage contains selected city to display a Pie chart. 
+    this.localPieData();
   },
   methods: {
     async fetchData() {
@@ -88,8 +91,19 @@ export default {
       // Get correct data for pie chart based on clicked bar from bar chart. 
       const citySpecs = this.specificationData.filter(a => a.city == id);
 
+      // Store the selected city inside local storage.
+      localStorage.pieCity = JSON.stringify(citySpecs);
+
       // Set pieData inside data() to the generated citySpecs.
       this.pieData = citySpecs;
+    },
+    localPieData() {
+      // If localstorage has an item named pieCity, parse it to an object 
+      // Set pieData variable (inside data) to it's value.
+      if (localStorage.pieCity) {
+        const local = JSON.parse(localStorage.getItem('pieCity'));
+        this.pieData = local;
+      }
     }
   },
 };

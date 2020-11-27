@@ -1,6 +1,6 @@
 <template>
     <footer>
-        <p>Bron gebruikte data: <a href="https://opendata.rdw.nl/" target="_blank">RDW</a>. © 2020 Lars Ruijs</p>
+        <p>Bron gebruikte data: <a href="https://opendata.rdw.nl/" target="_blank">RDW</a>. <br> Bron afbeelding: <a href="https://opendata.rdw.nl/" target="_blank">Unsplash</a>. <br> © 2020 Lars Ruijs</p>
     </footer>
 </template>
 

@@ -57,11 +57,11 @@ export default {
         // Create a map of the Netherlands using topojson from Cartomap. Fetch using D3.
         // Use topojson feature to convert to geoJSON
         json('https://cartomap.github.io/nl/wgs84/landsdeel_2020.topojson').then(data => {
-            const gemeentes = feature(data, data.objects.landsdeel_2020)
+            const areas = feature(data, data.objects.landsdeel_2020)
             
             // Select al path-elements inside the svg. Bind the data to it and generate the paths used for displaying the map.
             g.selectAll('path')
-            .data(gemeentes.features)
+            .data(areas.features)
             .enter()
             .append('path')
                 .attr('d', pathGenerator)
