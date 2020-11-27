@@ -38,7 +38,7 @@ function getCityData(cities) {
 
 	//Use HERE Maps API Geocoding to get latitude and longitude coordinates for a city name
 	async function getCoordinates(cityName) {
-		const geo = await getData(`https://geocode.search.hereapi.com/v1/geocode?apiKey=B1CkIQ-gETJxbw3X00kk3YE0S2gkkODYpcBk_Nl2Bf4&q=${cityName},%20NL`);
+		const geo = await getData(`https://geocode.search.hereapi.com/v1/geocode?apiKey=1UjERJ7Ha5LeWNMI5ihS8SSBDF_GX4GywR-1FVL4PlI&q=${cityName},%20NL`);
 		return geo.items[0] ? geo.items[0].position : {lat: null, lng: null};
 	}
 
