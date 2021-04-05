@@ -1,3 +1,5 @@
+import { data } from "../assets/data.js";
+
 // Endpoint with P+R Locations
 const PenREndpoint = "https://opendata.rdw.nl/resource/6wzd-evwu.json";
 
@@ -22,7 +24,7 @@ function getCityData(cities) {
 		acc[city] = acc[city] || [city, 0];
 		acc[city][1]++;
 		return acc;
-	},{})).map(async object=> {
+	},{})).map(async object => {
 		const coor = await getCoordinates(object[0]);
 		return {
 		city: object[0], 
@@ -38,8 +40,13 @@ function getCityData(cities) {
 
 	//Use HERE Maps API Geocoding to get latitude and longitude coordinates for a city name
 	async function getCoordinates(cityName) {
+	const localData = data.map(item => item.city).indexOf(cityName);
+	if(localData != -1) {
+		return {lat: +data[localData].lat, lng: +data[localData].lng};
+	} else {
 		const geo = await getData(`https://geocode.search.hereapi.com/v1/geocode?apiKey=B1CkIQ-gETJxbw3X00kk3YE0S2gkkODYpcBk_Nl2Bf4&q=${cityName},%20NL`);
 		return geo.items[0] ? geo.items[0].position : {lat: null, lng: null};
+	}
 	}
 
 // Combine the P+R Data with the Parking Specification data
